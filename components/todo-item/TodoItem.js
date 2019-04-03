@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 import css from './TodoItem.css';
 
@@ -18,7 +19,7 @@ export default function todoItem(props) {
       :
       <input type="checkbox" onChange={onChange} className={css.item__input}></input>
     }
-    <span className={css.item__link}>{item.title}</span>
+    <Link as={`/${item.id}`} href={`/todo?id=${item.id}`}><a className={css.item__link}>{item.title}</a></Link>
     <span className={css.item__due}>{item.due}</span>
     </li>
   );

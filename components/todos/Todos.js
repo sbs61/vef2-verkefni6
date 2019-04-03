@@ -15,9 +15,6 @@ export default function Todos(props) {
 
   return (
     <React.Fragment>
-      {loading && (
-        (<p>Hleð gögnum...</p>)
-      )}
       {!loading && (
         <React.Fragment>
           <Button onClick={onClick} children={hide ? 'Fela búið' : 'Sýna allt'} />

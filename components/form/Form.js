@@ -36,12 +36,21 @@ export default function Form(props) {
   }
 
   return (
-    <form className={css.form} onSubmit={onSubmit} onChange={onChange}>
-    <h2 className={css.form__header}>Nýtt verkefni</h2>
-    <Errors errors={errors}/>
-    <Field name='title' type='text' label='Titill:'/>
-    <Field name='date' type='datetime-local' label='Klárast fyrir:'/>
-    <Button children='Búa til'/>
-    </form>
+    <React.Fragment>
+      {loading && (
+        (<p>Bý til verkefni...</p>)
+      )}
+      {!loading && ( 
+      <React.Fragment>
+        <form className={css.form} onSubmit={onSubmit} onChange={onChange}>
+        <h2 className={css.form__header}>Nýtt verkefni</h2>
+        <Errors errors={errors}/>
+        <Field name='title' type='text' label='Titill:'/>
+        <Field name='date' type='datetime-local' label='Klárast fyrir:'/>
+        <Button children='Búa til'/>
+        </form>
+      </React.Fragment>
+  )}
+  </React.Fragment>
   )
 }

@@ -11,7 +11,7 @@ app
   .then(() => {
     const server = express();
 
-    server.get('/:id', (req, res) => {
+    server.get('/todo/:id', (req, res) => {
       app.render(req, res, '/', { id: req.params.id });
     });
 

@@ -4,12 +4,12 @@ import css from './Field.css';
 
 export default function Field(props) {
 
-  const { type, label, name } = props;
+  const { type, label, name, value } = props;
 
   return (
     <div className={css.field}>
     <label className={css.field__label}>{label}</label>
-    <input name={name} type={type} className={css.field__input}></input>
+    <input name={name} type={type} className={css.field__input} value={value}></input>
     </div>
   );
 }

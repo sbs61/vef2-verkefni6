@@ -20,8 +20,8 @@ export async function updateTodo(id, { title, completed, due } = {}) {
 export async function getTodos(hideCompleted) {
   /* todo */
   const add = hideCompleted ? '?completed=false' : ''
-  const u = apiUrl + add;
-  const response = await fetch(u);
+  const url = new URL(`/${add}`, apiUrl);
+  const response = await fetch(url.href);
 
   if(!response.ok){
     return null;
@@ -32,4 +32,13 @@ export async function getTodos(hideCompleted) {
 
 export async function getTodo(id) {
   /* todo */
+  const url = new URL(`/${id}`, apiUrl);
+  console.log('fetch', url.href);
+  const response = await fetch(url.href);
+
+  if(!response.ok){
+    return null;
+  }
+
+  return response.json();
 }
