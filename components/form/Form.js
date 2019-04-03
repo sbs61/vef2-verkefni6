@@ -17,16 +17,31 @@ export default function Form(props) {
   const [errors, setErrors] = useState([]);
 
   async function onSubmit(e) {
+    setLoading(true);
+    const err = [];
+    if(data.title.length < 1 || data.title.length > 128){
+      err.push('Titill verður að vera strengur sem er 1 til 128 stafir');
+    }
+    setErrors(err);
 
+    if(err.length === 0){
+      console.log(data);
+    }
+    setLoading(false);
   }
 
   function onChange(e) {
-
+    const {name, value} = e.target;
+    setData({...data, [name]: value});
   }
 
   return (
-    <form className={css.form} onSubmit={onSubmit}>
-
+    <form className={css.form} onSubmit={onSubmit} onChange={onChange}>
+    <h2 className={css.form__header}>Nýtt verkefni</h2>
+    <Errors errors={errors}/>
+    <Field name='title' type='text' label='Titill:'/>
+    <Field name='date' type='datetime-local' label='Klárast fyrir:'/>
+    <Button children='Búa til'/>
     </form>
   )
 }
