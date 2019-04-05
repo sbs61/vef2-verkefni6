@@ -1,3 +1,13 @@
+# Keyrsla 
+  
+npm install  
+  
+stilla .env skrá á eftirfarandi hátt
+*API_URL=
+*NODE_ENV=
+   
+npm start
+
 # Verkefni 6
 
 Verkefni 6 snýst um að setja upp Next.js vef sem [nýtir vefþjónustu úr verkefni 4](https://github.com/vefforritun/vef2-2019-v4-synilausn) til að birta verkefnalista.
