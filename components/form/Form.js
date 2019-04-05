@@ -12,7 +12,7 @@ import css from './Form.css';
 export default function Form(props) {
   const { onCreated, refreshPage } = props;
 
-  const [data, setData] = useState({ title: '', date: undefined });
+  const [data, setData] = useState({ title: '', due: undefined });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
@@ -26,12 +26,11 @@ export default function Form(props) {
       }
       setErrors(err);
       setLoading(false);
-      setData({ title: '', date: undefined });
       return null;
     }
     setErrors(err);
     await refreshPage();
-    setData({ title: '', date: undefined });
+    setData({ title: '', due: undefined });
     setLoading(false);
   }
 
@@ -47,11 +46,11 @@ export default function Form(props) {
       )}
       {!loading && ( 
       <React.Fragment>
-        <form className={css.form} onSubmit={onSubmit} onChange={onChange}>
+        <form className={css.form} onSubmit={onSubmit}>
         <h2 className={css.form__header}>Nýtt verkefni</h2>
         <Errors errors={errors}/>
-        <Field name='title' type='text' label='Titill:'/>
-        <Field name='due' type='datetime-local' label='Klárast fyrir:'/>
+        <Field name='title' type='text' label='Titill:' value={data.title} onChange={onChange}/>
+        <Field name='due' type='datetime-local' label='Klárast fyrir:' value={data.due} onChange={onChange}/>
         <Button children='Búa til'/>
         </form>
       </React.Fragment>

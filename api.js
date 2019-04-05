@@ -32,10 +32,6 @@ export async function addTodo(title, due) {
       })
   });
 
-  if(!response.ok){
-    return response.json();
-  }
-
   return response.json();
 }
 
@@ -54,10 +50,6 @@ export async function updateTodo(id, { title, completed, due } = {}) {
       due: due
       })
   });
-
-  if(!response.ok){
-    return null;
-  }
 
   return response.json();
 }
