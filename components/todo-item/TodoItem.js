@@ -29,7 +29,7 @@ export default function todoItem(props) {
       <div>
       <input type="checkbox" onChange={handleChange} checked={itemCompleted} className={css.item__input} defaultValue={item.id}/>
     <Link as={`/${item.id}`} href={`/todo?id=${item.id}`}><a className={css.item__link}>{item.title}</a></Link>
-    <span className={css.item__due}>{item.due}</span>
+      { item.due ? <span className={css.item__due}>{`Klárist fyrir ${item.due}`}</span> : <span></span> }
     </div>
       )}
     </li>

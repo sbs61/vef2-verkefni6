@@ -31,7 +31,6 @@ export default function todoDetail(props) {
     const completed = data.completed;
     const due = data.due;
     const result = await updateTodo(id, { title, completed, due });
-    console.log(result);
     if(result.length > 0){
       for(var i = 0; i < result.length; i++){
         err.push(result[i].message);
@@ -75,7 +74,7 @@ export default function todoDetail(props) {
           <input name='completed' type='checkbox' defaultChecked={data.completed} onChange={onToggleChecked} value={data.completed} className={css.todoDetail__checkbox}></input>
           </div>
       </div>
-      <Field name='due' type='datetime-local' label='Klárast fyrir:' value={new Date(data.due)} onChange={onChange}/>
+      <Field name='due' type='datetime-local' label='Klárast fyrir:' value={data.due} onChange={onChange}/>
       <div className={css.todoDetail__field}>
         <span className={css.todoDetail__label}>Uppfært:</span>
         <span className={css.todoDetail__date}>{updated}</span>
