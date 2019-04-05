@@ -18,18 +18,18 @@ export default function Form(props) {
 
   async function onSubmit(e) {
     setLoading(true);
-    const err = [];
-    if(data.title.length < 1 || data.title.length > 128){
-      err.push('Titill verður að vera strengur sem er 1 til 128 stafir');
-    }
-    setErrors(err);
-    if(err.length>0){
+    const err = []
+    const result = await addTodo(data.title, data.due);
+    if(result.length > 0){
+      for(var i = 0; i < result.length; i++){
+        err.push(result[i].message);
+      }
+      setErrors(err);
       setLoading(false);
-      e.preventDefault();
+      setData({ title: '', date: undefined });
       return null;
     }
-
-    await addTodo(data.title, data.due);
+    setErrors(err);
     await refreshPage();
     setData({ title: '', date: undefined });
     setLoading(false);

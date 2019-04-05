@@ -33,7 +33,7 @@ export async function addTodo(title, due) {
   });
 
   if(!response.ok){
-    return null;
+    return response.json();
   }
 
   return response.json();
