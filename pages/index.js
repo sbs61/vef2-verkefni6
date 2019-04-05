@@ -21,6 +21,11 @@ function Home(props) {
     setLoading(false);
   }
 
+  async function refreshPage(){
+    const newData = await getTodos();
+    setData(newData);
+  }
+
   return (
     <Layout title="Verkefni">
     <Todos
@@ -28,7 +33,7 @@ function Home(props) {
       data={data}
       onToggleCompleted={onToggleCompleted}
       hide={hide}/>
-    <Form/>
+    <Form refreshPage={refreshPage}/>
     </Layout>
   );
 }

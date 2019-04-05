@@ -6,7 +6,6 @@ import css from './Todos.css';
 
 // Listi af verkefnum á forsíðu
 export default function Todos(props) {
-  const [showNew, setShowNew] = useState(true);
   const { data, loading, onToggleCompleted, hide } = props;
 
   function onClick() {
@@ -15,6 +14,9 @@ export default function Todos(props) {
 
   return (
     <React.Fragment>
+      {loading && (
+        (<p>Hleð verkefnum...</p>)
+      )}
       {!loading && (
         <React.Fragment>
           <Button onClick={onClick} children={hide ? 'Fela búið' : 'Sýna allt'} />

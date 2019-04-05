@@ -10,7 +10,7 @@ import css from './Form.css';
 
 // Form á forsíðu
 export default function Form(props) {
-  const { onCreated } = props;
+  const { onCreated, refreshPage } = props;
 
   const [data, setData] = useState({ title: '', date: undefined });
   const [loading, setLoading] = useState(false);
@@ -23,10 +23,15 @@ export default function Form(props) {
       err.push('Titill verður að vera strengur sem er 1 til 128 stafir');
     }
     setErrors(err);
-
-    if(err.length === 0){
-      console.log(data);
+    if(err.length>0){
+      setLoading(false);
+      e.preventDefault();
+      return null;
     }
+
+    await addTodo(data.title, data.due);
+    await refreshPage();
+    setData({ title: '', date: undefined });
     setLoading(false);
   }
 
@@ -38,7 +43,7 @@ export default function Form(props) {
   return (
     <React.Fragment>
       {loading && (
-        (<p>Bý til verkefni...</p>)
+        (<p>Bý til todo...</p>)
       )}
       {!loading && ( 
       <React.Fragment>
@@ -46,7 +51,7 @@ export default function Form(props) {
         <h2 className={css.form__header}>Nýtt verkefni</h2>
         <Errors errors={errors}/>
         <Field name='title' type='text' label='Titill:'/>
-        <Field name='date' type='datetime-local' label='Klárast fyrir:'/>
+        <Field name='due' type='datetime-local' label='Klárast fyrir:'/>
         <Button children='Búa til'/>
         </form>
       </React.Fragment>

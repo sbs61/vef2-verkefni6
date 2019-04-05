@@ -10,6 +10,36 @@
   margin-bottom: 1rem;
 }
 
+.todoDetail__field {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.todoDetail__date {
+  flex: 3;
+  padding-left: 1rem;
+  font-size: 1rem;
+}
+
+.todoDetail__input {
+  flex: 3;
+  font-size: 1rem;
+}
+
+.todoDetail__checkbox {
+  transform: scale(1.5);
+}
+
+.todoDetail__label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 1.375rem;
+}
+
 .todoDetail__term {
   flex: 1 1 25%;
   display: flex;
@@ -27,6 +57,8 @@
 }
 
 .todoDetail__buttons {
+  max-width: 600px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -38,28 +70,3 @@
   color: #000;
 }
 
-.field {
-  max-width: 600px;
-
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1rem;
-}
-
-.field__label {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  font-size: 1.375rem;
-}
-
-.field__input {
-  flex: 3;
-  font-size: 1rem;
-  padding: 8px;
-}
-
-.item__due {
-  padding-left: 1rem;
-  font-size: 1rem;
-}
